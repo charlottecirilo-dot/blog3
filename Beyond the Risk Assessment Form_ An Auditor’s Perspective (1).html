@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beyond the Risk Assessment Form: An Auditor’s Perspective</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf1ee;--surface:#fff;--ink:#3b2219;--muted:#7a5a4d;--brown:#5a3325;--pink:#e58fa8;--pink-soft:#f8d7e0;--line:#ecd3cc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#26150f;--surface:#33201a;--ink:#f6e7e1;--muted:#d1b0a4;--brown:#e9c9bb;--pink:#f0a2b8;--pink-soft:#4a2a33;--line:#4d332a}}
+:root[data-theme="dark"]{--bg:#26150f;--surface:#33201a;--ink:#f6e7e1;--muted:#d1b0a4;--brown:#e9c9bb;--pink:#f0a2b8;--pink-soft:#4a2a33;--line:#4d332a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.75 Lora,Georgia,serif}
+.hero{background:linear-gradient(135deg,#4a281c,#7a4332 60%,#c76f8a);color:#fff;padding:72px 20px 64px;text-align:center}
+.hero .tag{display:inline-block;background:var(--pink-soft);color:#5a3325;padding:4px 14px;border-radius:99px;font:600 13px/1.6 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font:700 clamp(28px,5vw,46px)/1.2 'Playfair Display',Georgia,serif;max-width:860px;margin:20px auto 16px}
+.hero p{margin:0;opacity:.9;font:15px system-ui,sans-serif}
+main{max-width:740px;margin:0 auto;padding:36px 20px 20px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.toc a{font:14px system-ui,sans-serif;color:var(--brown);background:var(--pink-soft);padding:6px 14px;border-radius:99px;text-decoration:none}
+.toc a:hover{background:var(--pink);color:#3b2219}
+article{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 32px 28px}
+h2{font:700 27px/1.3 'Playfair Display',Georgia,serif;color:var(--brown);margin:36px 0 8px;padding-left:14px;border-left:5px solid var(--pink)}
+p{margin:0 0 16px}
+.lead{font-size:20px;color:var(--muted)}
+.card{background:var(--pink-soft);border-radius:14px;padding:18px 24px;margin:18px 0}
+.card ul{margin:0;padding-left:20px}
+.card li::marker{color:var(--pink)}
+.refs p{font-size:15px;padding-left:24px;text-indent:-24px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font:14px system-ui,sans-serif;padding:24px 20px 40px}
+@media(max-width:560px){article{padding:4px 18px 20px}body{font-size:17px}}
+
+.hero{position:relative;overflow:hidden}
+.hero>*{position:relative;z-index:1}
+.blob{position:absolute;border-radius:50%;background:rgba(248,215,224,.18);z-index:0}
+.b1{width:220px;height:220px;top:-70px;left:-60px}.b2{width:140px;height:140px;bottom:-40px;right:8%}.b3{width:70px;height:70px;top:40px;right:14%;background:rgba(229,143,168,.35)}
+.spark{position:absolute;z-index:1;font-size:26px;animation:fl 4s ease-in-out infinite}
+.s1{top:28px;left:12%}.s2{bottom:30px;left:20%;animation-delay:1s}.s3{top:60px;right:6%;animation-delay:2s}
+@keyframes fl{50%{transform:translateY(-10px) rotate(12deg)}}
+@media(prefers-reduced-motion:reduce){.spark{animation:none}}
+.ic{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin-right:10px;border-radius:12px;background:var(--pink-soft);font-size:22px;vertical-align:middle;border-left:0}
+h2{border-left:0;padding-left:0;border-bottom:2px dashed var(--pink);padding-bottom:8px}
+.card{border:1.5px dashed var(--pink);position:relative}
+.card::after{content:"✿";position:absolute;top:-12px;right:16px;background:var(--surface);color:var(--pink);padding:0 6px;font-size:20px}
+.refs p{padding-left:24px}
+.orn{text-align:center;color:var(--pink);letter-spacing:.5em;margin:28px 0 0;font-size:18px}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--pink),#7a4332);z-index:20}
+#top{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border:0;border-radius:50%;background:var(--pink);color:#3b2219;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.2s}
+#top.on{opacity:1;pointer-events:auto}
+
+:root{--chk:rgba(90,51,37,.10)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--chk:rgba(233,201,187,.07)}}
+:root[data-theme="dark"]{--chk:rgba(233,201,187,.07)}
+body{background-image:linear-gradient(90deg,var(--chk) 50%,transparent 50%),linear-gradient(var(--chk) 50%,transparent 50%);background-size:44px 44px}
+.hero{background:#5a3325}
+.hero::before{content:"";position:absolute;inset:auto 0 0 0;height:22px;z-index:0;background:repeating-conic-gradient(#3b2219 0 25%,#f8d7e0 0 50%) 0 0/22px 22px}
+.hero{padding-bottom:84px}
+.bow{position:absolute;z-index:1;width:64px;height:48px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cpath d='M16 12L3 3Q0 12 3 21Z' fill='%23d7263d'/%3E%3Cpath d='M16 12L29 3Q32 12 29 21Z' fill='%23d7263d'/%3E%3Cpath d='M14 15L10 23M18 15L22 23' stroke='%23a3122a' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='4' fill='%23a3122a'/%3E%3C/svg%3E") center/contain no-repeat}
+.bow.l{top:22px;left:6%;transform:rotate(-14deg)}.bow.r{top:22px;right:6%;transform:rotate(14deg) scaleX(-1)}
+article{position:relative;border-top:0;padding-top:34px}
+article::before{content:"";position:absolute;inset:0 0 auto 0;height:16px;border-radius:18px 18px 0 0;background:repeating-conic-gradient(#5a3325 0 25%,#f8d7e0 0 50%) 0 0/16px 16px}
+h2::before{content:"";display:inline-block;width:30px;height:22px;margin-right:10px;vertical-align:-2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cpath d='M16 12L3 3Q0 12 3 21Z' fill='%23d7263d'/%3E%3Cpath d='M16 12L29 3Q32 12 29 21Z' fill='%23d7263d'/%3E%3Cpath d='M14 15L10 23M18 15L22 23' stroke='%23a3122a' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='4' fill='%23a3122a'/%3E%3C/svg%3E") center/contain no-repeat}
+.card::after{content:"";width:30px;height:22px;top:-11px;right:18px;padding:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cpath d='M16 12L3 3Q0 12 3 21Z' fill='%23d7263d'/%3E%3Cpath d='M16 12L29 3Q32 12 29 21Z' fill='%23d7263d'/%3E%3Cpath d='M14 15L10 23M18 15L22 23' stroke='%23a3122a' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='4' fill='%23a3122a'/%3E%3C/svg%3E") center/contain no-repeat}
+footer::before{content:"";display:block;width:36px;height:27px;margin:0 auto 10px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 24'%3E%3Cpath d='M16 12L3 3Q0 12 3 21Z' fill='%23d7263d'/%3E%3Cpath d='M16 12L29 3Q32 12 29 21Z' fill='%23d7263d'/%3E%3Cpath d='M14 15L10 23M18 15L22 23' stroke='%23a3122a' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='4' fill='%23a3122a'/%3E%3C/svg%3E") center/contain no-repeat}
+footer{border-top:16px solid transparent;border-image:repeating-conic-gradient(#5a3325 0 25%,#f8d7e0 0 50%) 16/16px 0 0 0 round;padding-top:28px}
+.spark,.blob,.orn{display:none}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header class="hero">
+<i class="bow l"></i><i class="bow r"></i>
+<span class="spark s2">🌸</span><span class="spark s3">🤎</span>
+<span class="tag">Information Security</span>
+<h1>Beyond the Risk Assessment Form: An Auditor’s Perspective on Asset Ownership, Classification, and Control Effectiveness</h1>
+<p>A reflection on the Engineering Office/Unit risk assessment · 8 min read</p>
+</header>
+<main>
+<nav class="toc">
+<a href="#intro">Introduction</a><a href="#owns">What the Organization Owns</a><a href="#classify">Classification</a><a href="#owner">Ownership</a><a href="#controls">Control Evidence</a><a href="#gaps">Audit Gaps</a><a href="#checklist">Checklist</a><a href="#end">Conclusion</a>
+</nav>
+<article>
+
+<h2 id="intro">Introduction</h2>
+<p class="lead">Does the organization truly know what it owns? Who is responsible for protecting each asset? Can it prove that its security controls actually work?</p>
+<p>Our Group 6 assessment focused on the Engineering Office/Unit of a government public works organization. It identified ten information security risks involving engineering and project documents, topographic data and road designs, employee accounts, office computers, removable storage, personal devices used for work, electronic project files, backups, physical documents, and official email. Six of the ten were rated significant.</p>
+<p>An auditor would not consider the assessment complete just because risks and treatments were documented. They would check whether asset information was complete, responsibilities formally assigned, and evidence available that controls operate effectively. This reflection revisits our work from that perspective, not to expose weaknesses, but to make a risk assessment a more reliable tool for continuous improvement.</p>
+
+<h2 id="owns">Understanding What the Organization Owns</h2>
+<p>An organization cannot protect assets it has not identified. An asset inventory records the information, equipment, accounts, and systems that support operations: what exists, where it is, why it matters, and how it should be protected. NIST (2024) stresses maintaining inventories of hardware, software, services, and data while prioritizing by importance.</p>
+<p>Listing “electronic project files” as a category does not prove a complete inventory exists. An auditor would ask whether individual assets and repositories are recorded, located, maintained, and regularly updated. A useful inventory includes an identifier, description, location, business purpose, classification, accountable owner, custodian, authorized users, and review date, plus dependencies, lifecycle status, and retention requirements.</p>
+
+<h2 id="classify">Identifying and Classifying the Most Important Assets</h2>
+<p>Not every asset needs the same protection. Engineering designs, topographic information, and sensitive technical records deserve particular attention, and might be classified as public, internal, confidential, or restricted, based on documented criteria rather than assumptions. Credentials, backups, and printed documents also need classification.</p>
+<p>An auditor expects a documented policy with handling procedures, then checks whether practice matches it. A “confidential” document stored where unauthorized users can reach it offers little assurance. Classification should weigh confidentiality (no unauthorized disclosure), integrity (accuracy, no unapproved changes), and availability (access when needed). Protecting a design from disclosure is not enough if the approved version can be altered or cannot be recovered after deletion.</p>
+
+<h2 id="owner">Establishing Clear Asset Ownership and Accountability</h2>
+<p>Ownership differs from possession and technical maintenance. An owner decides an asset’s importance, approves access, sets protection requirements, and ensures risks are addressed. A custodian implements safeguards; users follow policy.</p>
+<p>Our recommendations (access reviews, document-sharing controls, personal-device rules, awareness, backup restoration testing) each need someone to carry them out and follow up. An auditor would request an asset register, responsibility matrix, approved access requests, and records of periodic reviews, and would check that responsibilities are updated when people change roles. Assigning duties to roles rather than informal agreements creates accountability without exposing individuals.</p>
+<div class="card"><strong>Three questions clear ownership answers:</strong> Who makes decisions about an asset? Who implements its controls? Who verifies they remain effective?</div>
+
+<h2 id="controls">Proving That Security Controls Actually Work</h2>
+<p>Documenting a control is different from proving it works. Our form listed accounts and passwords, restricted access, endpoint protection, backups, designated storage, recipient verification, and policies. NIST’s assessment guidance (Pillitteri, 2022) asks whether controls are implemented correctly, operating as intended, and producing the desired outcome.</p>
+<p><strong>Access control:</strong> approved requests, current user listings, documented reviews, and removal of unneeded permissions; an auditor may sample accounts against authorized duties. <strong>Authentication:</strong> configuration settings and system records, never actual passwords. <strong>Malware and phishing:</strong> protection reports, update records, incident reports, and awareness activities. Attendance proves training happened, not that staff can spot suspicious messages.</p>
+<p><strong>Backups:</strong> a successful job does not prove restorability. Evidence should show what was tested, whether recovered data was usable, and whether failures were corrected. <strong>Physical documents, removable media, and email:</strong> checkout records, storage procedures, device policies, and recipient-verification procedures.</p>
+<p>Every important control should have a defined purpose, a responsible role, and evidence of operation.</p>
+
+<h2 id="gaps">Potential Gaps an Auditor Would Investigate</h2>
+<p>These are potential audit questions based on the documentation reviewed, not confirmed findings.</p>
+<div class="card"><ul>
+<li><strong>Inventory:</strong> is there a complete, maintained, reconciled asset inventory with update procedures?</li>
+<li><strong>Ownership:</strong> is there a documented owner for every asset and treatment?</li>
+<li><strong>Control effectiveness:</strong> where are the test results, configuration evidence, and operational records?</li>
+<li><strong>Classification:</strong> does an approved scheme exist, do employees understand it, and does practice follow it?</li>
+<li><strong>Backup recovery:</strong> do restoration tests occur, succeed, and trigger corrective action?</li>
+<li><strong>Treatment tracking:</strong> does each treatment have an owner, target date, status, evidence, and follow-up review?</li>
+</ul></div>
+
+<h2 id="checklist">Strengthening Treatments with an Inventory and Audit Checklist</h2>
+<p>An accurate inventory links risks to specific assets, roles, and verifiable outcomes, in line with the asset management and prioritization principles of NIST CSF 2.0 (2024). A checklist turns it into repeatable verification:</p>
+<div class="card"><ul>
+<li>Has an accountable asset owner been assigned?</li>
+<li>Is the classification documented and appropriate?</li>
+<li>Are access permissions reviewed periodically?</li>
+<li>Are updates and endpoint protections maintained?</li>
+<li>Are backups performed and restoration tests documented?</li>
+<li>Are sensitive documents handled according to policy?</li>
+<li>Is evidence available that the control works?</li>
+<li>Do issues have corrective actions and follow-up dates?</li>
+</ul></div>
+<p>Record the evidence reviewed, result, responsible role, issue, corrective action, and follow-up date. For example, link sensitive repositories to access approvals and scheduled reviews, and tie data-loss treatment to backup schedules and restoration-test results. These tools should never become paperwork exercises, and should be reviewed regularly and after major changes so audit results feed future assessments.</p>
+
+<h2 id="end">Conclusion</h2>
+<p>Revisiting our assessment taught us that security requires more than identifying risks and proposing fixes. An organization must know its assets, classify them by importance, assign clear ownership, and keep evidence that controls work. An inventory improves visibility and accountability; a checklist supports consistent verification.</p>
+<p>An audit is not about finding mistakes. It is about whether the organization can demonstrate that its information is protected and that its treatments reduce exposure in a measurable, sustainable way.</p>
+
+<h2>References</h2>
+<div class="refs">
+<p>National Institute of Standards and Technology. (2024). <em>The NIST cybersecurity framework (CSF) 2.0</em>. https://doi.org/10.6028/NIST.CSWP.29</p>
+<p>Pillitteri, V. (2022). <em>Assessing security and privacy controls in information systems and organizations</em> (NIST SP 800-53A, Rev. 5). NIST. https://doi.org/10.6028/NIST.SP.800-53Ar5</p>
+</div>
+</article>
+</main>
+<button id="top" aria-label="Back to top">↑</button>
+<footer>Information Security Risk Assessment Reflection</footer>
+<script>
+var b=document.getElementById('bar'),t=document.getElementById('top');
+addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;b.style.width=(h>0?scrollY/h*100:0)+'%';t.classList.toggle('on',scrollY>400)});
+t.onclick=function(){scrollTo({top:0,behavior:'smooth'})};
+</script>
+</body>
+</html>
